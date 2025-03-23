@@ -6,7 +6,7 @@ default: &default
   username: <%= ENV["PGUSER"] %>
   password: <%= ENV["PGPASSWORD"] %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") %>
-  host: <%= ENV["PGHOST"] || 'localhost' %>
+  host: <%= ENV["PGHOST"] %>
   port: 5432
 
 
