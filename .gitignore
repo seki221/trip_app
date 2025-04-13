@@ -36,9 +36,6 @@
 config/credentials.yml.enc
 .DS_Store
 
-
-
-config/master.key
 config/credentials/production.key
 
 /public/packs
