@@ -2,6 +2,8 @@
 
 class DeviseCreateUsers < ActiveRecord::Migration[7.2]
   def change
+    enable_extension 'pgcrypto'
+
     create_table :users, id: :uuid do |t|
       ## Database authenticatable
       t.string :username,              null: false, default: ""
