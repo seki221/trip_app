@@ -1,16 +1,13 @@
 <p style="color: green"><%= notice %></p>
-
-<% content_for :title, "Planners" %>
-
-<h1>Planners</h1>
-
-<div id="planners">
-  <% @planners.each do |planner| %>
-    <%= render planner %>
-    <p>
-      <%= link_to "Show this planner", planner %>
-    </p>
-  <% end %>
+<div class="container pt-3">
+  <div class="sectionMain">
+    <div class="col-12">
+      <div class="add-plannner button-group">
+        <%= link_to 'しおり作成', new_planner_path, class: 'buttonCreate itemCreate' %>
+      </div>
+      <div class="planList">
+          <%= render 'planner' %> 
+      </div>
+    </div>
+  </div>
 </div>
-
-<%= link_to "New planner", new_planner_path %>

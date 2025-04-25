@@ -1,22 +1,21 @@
-<div id="<%= dom_id planner %>">
-  <p>
-    <strong>User:</strong>
-    <%= planner.user_id %>
-  </p>
-
-  <p>
-    <strong>Title:</strong>
-    <%= planner.title %>
-  </p>
-
-  <p>
-    <strong>Start date:</strong>
-    <%= planner.start_date %>
-  </p>
-
-  <p>
-    <strong>End date:</strong>
-    <%= planner.end_date %>
-  </p>
-
-</div>
+<% @planners.each do |planner| %>
+  <li class="planlink">
+    <%= link_to planner_schedules_path(planner), class: 'card' do %>
+      <div class="box card-img-top", style:height 120px;>
+      <%# MVP後S3か何か追加%>
+      </div>
+      <div class="planinformation center">
+        <div class="d-flex"style="flex-direction:column;">
+          <span class="start">
+            <%= l planner.start_date, format: :default if planner.start_date.present? %>
+          </span>
+          <span>~</span>
+          <span class="end">
+            <%= l planner.end_date, format: :default if planner.end_date.present? %>
+          </span>
+        </div>
+      <h3 class="card-title"><%= planner.title %></h3>
+      </div>
+    <% end %>
+  </li>
+<% end %>
