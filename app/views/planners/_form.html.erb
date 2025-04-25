@@ -1,37 +1,38 @@
-<%= form_with(model: planner) do |form| %>
-  <% if planner.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(planner.errors.count, "error") %> prohibited this planner from being saved:</h2>
+<div class="planner">
+  <%= form_with model: @planner, local: true do |f| %>
+    <% if @planner.errors.any? %>
+      <div id="error_explanation" class="alert alert-danger">
+        <h2><%= pluralize(@planner.errors.count, "エラー") %>が発生しました:</h2>
+        <ul>
+          <% @planner.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
+    <div class="field">
+      <div class="mb-3 pl-3 d-flex　flex-wrap flex-lg-nowrap">
+        <div class="mb-3">
+          <%= f.text_field :title , placeholder:"目的地"%>
+        </div>
+        <div class="form-group">
+        <%= f.label :start_date, '開始' %>
+        <%= f.datetime_select :start_date, {default: Date.today + 17.hours + 30.minutes}, class: 'form-control form-control-inline'%>
+        </div>
+        <div class="sp-br"></div>
+        <div class="dw">
+        >>
+        </div>
+        <div class="mb-3">
+        <%= f.label :end_date, '終了' %>
+        <%= f.datetime_select :end_date, {default: Date.today + 18.hours + 30.minutes},class: 'form-control form-control-inline' %>
+        </div>
+      </div>
+    </div>
 
-      <ul>
-        <% planner.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+    <div class="actions">
+        <%= f.submit t('planner.new.create', default: '作成する'), class: "buttonCreate itemCreate", name: "commit_create" %>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div>
-    <%= form.label :start_date, style: "display: block" %>
-    <%= form.date_field :start_date %>
-  </div>
-
-  <div>
-    <%= form.label :end_date, style: "display: block" %>
-    <%= form.text_field :end_date %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
