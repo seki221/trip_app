@@ -1,10 +1,10 @@
 <% @planners.each do |planner| %>
   <li class="planlink">
     <%= link_to planner_schedules_path(planner), class: 'card' do %>
-      <div class="box card-img-top", style:height 120px;>
+      <div class="box card-img-top" style="height: 120px;">
       <%# MVP後S3か何か追加%>
       </div>
-      <div class="planinformation center">
+      <div class="planinformation center card-body">
         <div class="d-flex"style="flex-direction:column;">
           <span class="start">
             <%= l planner.start_date, format: :default if planner.start_date.present? %>
