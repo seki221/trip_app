@@ -18,3 +18,8 @@
   font-size: 30px;
   text-decoration-line:none
 }
+/* メインページ背景色 */
+.bg-mainpage {
+  background: linear-gradient(180deg, rgba(9, 9, 121, 1) 0%, rgba(6, 193, 255, 1) 74%, rgba(255, 255, 255, 1) 93%);
+  height: 100%;
+}
