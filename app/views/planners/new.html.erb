@@ -1,11 +1,11 @@
-<% content_for :title, "New planner" %>
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="border rounded p-3 shadow" style="width: 400px;">
+    <% content_for :title, "New planner" %>
 
-<h1>New planner</h1>
+    <h1 class="h4 my-5 text-center">New planner</h1>
 
-<%= render "form", planner: @planner %>
+    <%= render "form", planner: @planner %>
 
-<br>
-
-<div>
-  <%= link_to "Back to planners", planners_path %>
+    
+  </div>
 </div>

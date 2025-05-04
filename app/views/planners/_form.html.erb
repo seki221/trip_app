@@ -11,28 +11,33 @@
       </div>
     <% end %>
     
-    <div class="field">
-      <div class="mb-3 pl-3 d-flex　flex-wrap flex-lg-nowrap">
+    <div class="field d-flex justify-content-center align-items-center">
+      <div class="mb-3 pl-3">
         <div class="mb-3">
           <%= f.text_field :title , placeholder:"目的地"%>
         </div>
+        <br>
         <div class="form-group">
-        <%= f.label :start_date, '開始' %>
-        <%= f.text_field :start_date, id: "startdate" %>
+        <%= f.text_field :start_date, id: "startdate" , placeholder:"開始日"%>
         </div>
         <div class="sp-br"></div>
-        <div class="dw">
+        <div class="dw text-center">
         >>
         </div>
         <div class="mb-3">
-        <%= f.label :end_date, '終了' %>
-        <%= f.text_field :end_date, id: "enddate" %>
+        <%= f.text_field :end_date, id: "enddate" , placeholder:"最終日"%>
         </div>
       </div>
     </div>
 
-    <div class="actions">
-        <%= f.submit t('planner.new.create', default: '作成する'), class: "buttonCreate itemCreate", name: "commit_create" %>
+    <div class="d-flex justify-content-center">
+      <div class="actions mx-3">
+          <%= f.submit t('planner.new.create', default: '作成する'), class: "btn btn-danger rounded-pill", name: "commit_create" %>
+      </div>
+
+      <div  class="mx-3">
+      <%= link_to "戻る", planners_path, class: "btn border-primary rounded-pill text-decoration-none" %>
+      </div>
     </div>
   <% end %>
 </div>
