@@ -8,11 +8,9 @@
   color: #B31667;
   font-family: "Nico Moji";
   font-size: 75px;
-  padding-top: 11rem;
+  padding: 11rem;
   margin-top: 0;
-  top:50%;
-    left: 50%;
-    position: absolute;
+  
 }
 .header-logo {
   color: #B31667;
