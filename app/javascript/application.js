@@ -3,6 +3,27 @@ import "@hotwired/turbo-rails"
 import "controllers"
 // import "bootstrap"
 
+// パスワード表示切り替え
+document.addEventListener("DOMContentLoaded", function () {
+    const toggle = (inputId, buttonId) => {
+      const input = document.getElementById(inputId);
+      const button = document.getElementById(buttonId);
+
+      button.addEventListener("click", function () {
+        if (input.type === "password") {
+          input.type = "text";
+          button.textContent = "非表示";
+        } else {
+          input.type = "password";
+          button.textContent = "表示";
+        }
+      });
+    };
+
+    toggle("passwordInput", "showPasswordButton");
+    toggle("passwordConfirmationInput", "showPasswordConfirmationButton");
+  });
+// 予定入力フォームカレンダー
 document.addEventListener("turbo:load", () => {
   $('#startdate').datepicker({
     yearSuffix: '年',
@@ -17,3 +38,4 @@ document.addEventListener("turbo:load", () => {
     dayNamesMin: [ '日', '月', '火', '水', '木', '金', '土' ]
   });
 });
+
