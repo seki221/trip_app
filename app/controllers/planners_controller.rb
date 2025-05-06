@@ -8,6 +8,7 @@ class PlannersController < ApplicationController
 
   # GET /planners/1 or /planners/1.json
   def show
+    @planner = current_user.planners.find(params[:id])
   end
 
   # GET /planners/new
@@ -21,7 +22,7 @@ class PlannersController < ApplicationController
 
   # POST /planners or /planners.json
   def create
-    @planner = Planner.new(planner_params)
+    @planner = current_user.planners.new(planner_params)
 
     respond_to do |format|
       if @planner.save
@@ -58,13 +59,18 @@ class PlannersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_planner
-      @planner = Planner.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_planner
+    @planner = current_user.planners.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def planner_params
-      params.require(:planner).permit(:user_id, :title, :start_date, :end_date)
-    end
+  # Only allow a list of trusted parameters through.
+  def planner_params
+    params.require(:planner).permit(:title, :start_date, :end_date)
+  end
+
+  def correct_user
+    @planner = current_user.planners.find(params[:id])
+    raise ActiveRecord::RecordNotFound unless @planner.user == current_user
+  end
 end
