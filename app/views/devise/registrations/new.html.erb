@@ -11,7 +11,7 @@
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <em>※ パスワードは<%= @minimum_password_length %>文字以上である必要があります</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password", id: "passwordInput" %>
     <button type="button" id="showPasswordButton">表示</button>
