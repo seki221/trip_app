@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_04_22_130748) do
+ActiveRecord::Schema[7.2].define(version: 2025_05_06_072857) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -23,6 +23,26 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_22_130748) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_planners_on_user_id"
+  end
+
+  create_table "schedules", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.uuid "planner_id", null: false
+    t.string "destination"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.date "date"
+    t.integer "cost"
+    t.text "description"
+    t.integer "position"
+    t.string "image"
+    t.text "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["planner_id"], name: "index_schedules_on_planner_id"
+    t.index ["user_id"], name: "index_schedules_on_user_id"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -39,4 +59,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_22_130748) do
   end
 
   add_foreign_key "planners", "users"
+  add_foreign_key "schedules", "planners"
+  add_foreign_key "schedules", "users"
 end
