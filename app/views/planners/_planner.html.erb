@@ -1,21 +1,24 @@
-<% @planners.each do |planner| %>
-  <li class="planlink">
-    <%= link_to planner_schedules_path(planner), class: 'card' do %>
-      <div class="box card-img-top" style="height: 120px;">
-      <%# MVP後S3か何か追加%>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <% @planners.each do |planner| %>
+    <div class="col">
+      <div class="card h-100">
+        <%= link_to planner_path(planner), class: 'text-decoration-none text-dark' do %>
+          <div class="card-img-top" style="height: 120px; background-color: #e9ecef;"></div>
+          <div class="card-body text-center">
+            <div class="d-flex flex-column mb-2">
+              <span class="text-muted">
+                <%= l planner.start_date, format: :default if planner.start_date.present? %>
+              </span>
+              <span class="text-muted">~</span>
+              <span class="text-muted">
+                <%= l planner.end_date, format: :default if planner.end_date.present? %>
+              </span>
+            </div>
+            <h5 class="card-title"><%= planner.title %></h5>
+          </div>
+        <% end %>
       </div>
-      <div class="planinformation center card-body">
-        <div class="d-flex"style="flex-direction:column;">
-          <span class="start">
-            <%= l planner.start_date, format: :default if planner.start_date.present? %>
-          </span>
-          <span>~</span>
-          <span class="end">
-            <%= l planner.end_date, format: :default if planner.end_date.present? %>
-          </span>
-        </div>
-      <h3 class="card-title"><%= planner.title %></h3>
-      </div>
-    <% end %>
-  </li>
-<% end %>
+    </div>
+  <% end %>
+</div>
