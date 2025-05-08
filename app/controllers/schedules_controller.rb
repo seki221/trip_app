@@ -13,6 +13,7 @@ class SchedulesController < ApplicationController
   # GET /schedules/new
   def new
     @schedule = Schedule.new
+    @planner = Planner.find(params[:planner_id])
   end
 
   # GET /schedules/1/edit
@@ -21,7 +22,10 @@ class SchedulesController < ApplicationController
 
   # POST /schedules or /schedules.json
   def create
-    @schedule = Schedule.new(schedule_params)
+    @schedule = current_user.schedules.build(schedule_params)
+    @planner = Planner.find(params[:planner_id])
+    @schedule = @planner.schedules.build(schedule_params)
+    @schedule.user = current_user
 
     respond_to do |format|
       if @schedule.save
