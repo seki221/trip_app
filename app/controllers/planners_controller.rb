@@ -26,7 +26,7 @@ class PlannersController < ApplicationController
 
     respond_to do |format|
       if @planner.save
-        format.html { redirect_to @planner, notice: "Planner was successfully created." }
+        format.html { redirect_to @planner, notice: "作ったで." }
         format.json { render :show, status: :created, location: @planner }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -53,7 +53,7 @@ class PlannersController < ApplicationController
     @planner.destroy!
 
     respond_to do |format|
-      format.html { redirect_to planners_path, status: :see_other, notice: "Planner was successfully destroyed." }
+      format.html { redirect_to planners_path, status: :see_other, notice: "削除されました." }
       format.json { head :no_content }
     end
   end
