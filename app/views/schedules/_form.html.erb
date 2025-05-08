@@ -1,42 +1,44 @@
-<%= form_with(model: schedule) do |form| %>
-  <% if schedule.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(schedule.errors.count, "error") %> prohibited this schedule from being saved:</h2>
+<div class="schedule">
+  <%= form_with(model: [@planner, @schedule]) do |form| %>
+    <% if schedule.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(schedule.errors.count, "error") %> prohibited this schedule from being saved:</h2>
 
-      <ul>
-        <% schedule.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% schedule.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="field d-grid justify-content-center align-items-center mb-3 pl-3">
+      <div class="mb-3 fw-20">
+        <%= form.text_field :destination , placeholder:"目的地" %>
+      </div>
+      <div class="mb-3">
+        <%= form.label :start_date, style: "display: block" %>
+        <%= form.datetime_field :start_date %>
+      </div>
+      <div class="mb-3">
+        <%= form.label :end_date, style: "display: block" %>
+        <%= form.datetime_field :end_date %>
+      </div>
+      <div class="mb-3">
+        <%= form.number_field :cost , placeholder:"費用(数字のみ入力してください)" %>
+      </div>
+      <div class="mb-3">
+        <%= form.text_area :description , placeholder:"地点説明" %>
+      </div>
+      <div class="mb-3">
+        <%= form.text_field :address , placeholder:"場所" %>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <div class="actions mx-3">
+      <%= form.submit %>
+      </div>
     </div>
   <% end %>
+</div>
 
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div>
-    <%= form.label :planner_id, style: "display: block" %>
-    <%= form.text_field :planner_id %>
-  </div>
-
-  <div>
-    <%= form.label :destination, style: "display: block" %>
-    <%= form.text_field :destination %>
-  </div>
-
-  <div>
-    <%= form.label :start_date, style: "display: block" %>
-    <%= form.datetime_field :start_date %>
-  </div>
-
-  <div>
-    <%= form.label :end_date, style: "display: block" %>
-    <%= form.datetime_field :end_date %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
