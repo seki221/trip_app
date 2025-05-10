@@ -1,0 +1,25 @@
+details.accordion-box {
+  border: 2px dashed black;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+summary{
+  background-color: hsla(15, 100%, 60%, 0.296);
+}
+.label-box {
+  min-width: 180px;
+  text-align: center;
+  background-color: #e76f51;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+.value-box {
+  margin-left: 24px;
+  padding:  16px;
+  margin-bottom: 0;
+  border: 1px solid black;
+  min-width: 200px;
+  flex-grow: 1;
+}
