@@ -3,19 +3,20 @@ default: &default
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
-  username: <%= ENV["PGUSER"] %>
-  password: <%= ENV["PGPASSWORD"] %>
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") %>
-  host: <%= ENV["PGHOST"] %>
+  username: postgres
+  password: password
+  pool: 5
+  host: db
   port: 5432
 
 
 development:
   <<: *default
-  database: <%= ENV["PGDATABASE_DEVELOPMENT"] %>
+  database: <%= ENV["PGDATABASE_DEVELOPMENT"] || "trip_app_development" %>
+
 test:
   <<: *default
-  database: <%= ENV["PGDATABASE_TEST"] %>
+  database: <%= ENV["PGDATABASE_TEST"] || "trip_app_test" %>
 
 production:
   <<: *default
