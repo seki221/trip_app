@@ -1,27 +1,44 @@
 <div id="<%= dom_id schedule %>">
-  <p>
-    <strong>User:</strong>
-    <%= schedule.user_id %>
-  </p>
-
-  <p>
-    <strong>Planner:</strong>
-    <%= schedule.planner_id %>
-  </p>
-
-  <p>
-    <strong>Destination:</strong>
-    <%= schedule.destination %>
-  </p>
-
-  <p>
-    <strong>Start date:</strong>
-    <%= schedule.start_date %>
-  </p>
-
-  <p>
-    <strong>End date:</strong>
-    <%= schedule.end_date %>
-  </p>
-
+  <details class="accordion-box m-5">
+    <summary class="d-flex p-3 align-items-center">
+      <strong class="label-box">目的地:</strong>
+      <p class="value-box"><%= schedule.destination %></p>
+      <div class="ms-3">
+        <%= link_to "予定を削除", planner_schedules_path(@planner), data: { turbo_method: "delete", turbo_confirm: "削除しますか？" }, class: " btn btn-danger rounded-pill m-3 btn" %>
+        <%= link_to 'お気に入り', class: 'btn btn-outline-warning btn-sm' %>
+      </div>
+    </summary>
+    <div class="accordion-content p-3">
+      <div class="d-flex mb-3 align-items-center">
+        <strong class="label-box">開始/到着　時刻:</strong>
+        <p class="value-box">
+          <%= schedule.start_date&.in_time_zone('Tokyo')&.strftime('%Y/%m/%d %H:%M') || '---' %>
+        </p>
+      </div>
+      <div class="d-flex mb-3 align-items-center">
+        <strong class="label-box">終了/出発予定:</strong>
+        <p class="value-box">
+          <%= schedule.end_date&.in_time_zone('Tokyo')&.strftime('%Y/%m/%d %H:%M') || '---' %>
+        </p>
+      </div>
+      <div class="d-flex mb-3 align-items-center">
+        <strong class="label-box">費用:</strong>
+        <p class="value-box">
+          <%= schedule.cost || '---' %>円
+        </p>
+      </div>
+      <div class="d-flex mb-3 align-items-center">
+        <strong class="label-box">地点説明:</strong>
+        <p class="value-box">
+          <%= schedule.description || '---' %>
+        </p>
+      </div>
+      <div class="d-flex mb-3 align-items-center">
+        <strong class="label-box">場所:</strong>
+        <p class="value-box">
+          <%= schedule.address || '---' %>
+        </p>
+      </div>
+    </div>
+  </details>
 </div>
