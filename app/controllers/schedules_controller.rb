@@ -1,5 +1,6 @@
 class SchedulesController < ApplicationController
   before_action :set_schedule, only: %i[ show edit update destroy ]
+  before_action :set_planner
 
   # GET /schedules or /schedules.json
   def index
@@ -8,6 +9,8 @@ class SchedulesController < ApplicationController
 
   # GET /schedules/1 or /schedules/1.json
   def show
+    @schedule = current_user.schedule.find(params[:id])
+    @schedule = Schedule.find(params[:id])
   end
 
   # GET /schedules/new
@@ -22,14 +25,14 @@ class SchedulesController < ApplicationController
 
   # POST /schedules or /schedules.json
   def create
-    @schedule = current_user.schedules.build(schedule_params)
+    @schedule = Schedule.new(schedule_params)
     @planner = Planner.find(params[:planner_id])
     @schedule = @planner.schedules.build(schedule_params)
     @schedule.user = current_user
 
     respond_to do |format|
       if @schedule.save
-        format.html { redirect_to @schedule, notice: "Schedule was successfully created." }
+        format.html { redirect_to planner_schedules_path(@planner), notice: "Schedule was successfully created." }
         format.json { render :show, status: :created, location: @schedule }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -69,6 +72,10 @@ class SchedulesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def schedule_params
-      params.require(:schedule).permit(:user_id, :planner_id, :destination, :start_date, :end_date)
+      params.require(:schedule).permit(:user_id, :planner_id, :destination, :start_date, :end_date, :cost, :description, :address)
+    end
+
+    def set_planner
+      @planner = Planner.find(params[:planner_id])
     end
 end
