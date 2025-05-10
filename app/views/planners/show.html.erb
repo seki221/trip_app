@@ -30,7 +30,8 @@
         <div class="d-flex">
         <%= link_to "しおり情報編集", edit_planner_path(@planner), class: 'btn border-danger rounded-pill m-3	' %>
         <%= link_to "しおりを削除", planner_path(@planner), data: { turbo_method: "delete", turbo_confirm: "削除しますか？" }, class: "border-danger rounded-pill m-3 btn" %>
-        </div>          
+        <%= link_to "Show this schedule", planner_schedules_path(planner_id: @planner.id), class: "border-danger rounded-pill m-3 btn" %>
+        </div>
         <% end %>
       </div>
     </div>
