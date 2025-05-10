@@ -2,9 +2,8 @@
 
 <%= render @schedule %>
 
-<div>
-  <%= link_to "Edit this schedule", edit_schedule_path(@schedule) %> |
-  <%= link_to "Back to schedules", schedules_path %>
+  <%= link_to "Edit this schedule", edit_planner_schedule_path(@schedule) %> |
+  <%= link_to "Back to schedules", planner_schedules_path %>
 
-  <%= button_to "Destroy this schedule", @schedule, method: :delete %>
+  <%= link_to "しおりを削除", planner_schedule_path(@planner), data: { turbo_method: "delete", turbo_confirm: "削除しますか？" }, class: "border-danger rounded-pill m-3 btn" %>
 </div>
