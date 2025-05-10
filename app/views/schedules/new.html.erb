@@ -1,11 +1,9 @@
-<% content_for :title, "New schedule" %>
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="border rounded p-3 shadow" style="width: 400px;">
+    <% content_for :title, "New schedule" %>
 
-<h1>New schedule</h1>
+    <h1 class="h4 my-5 text-center">New schedule</h1>
 
-<%= render "form", schedule: @schedule %>
-
-<br>
-
-<div>
-  <%= link_to "Back to schedules", planner_schedules_path %>
+    <%= render "form", schedule: @schedule %>
+  </div>
 </div>

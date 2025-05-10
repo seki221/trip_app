@@ -1,4 +1,4 @@
-<div class="schedule">
+<div class="schedule mx-auto justify-content-center align-items-center">
   <%= form_with(model: [@planner, @schedule]) do |form| %>
     <% if schedule.errors.any? %>
       <div style="color: red">
@@ -11,32 +11,39 @@
         </ul>
       </div>
     <% end %>
-    <div class="field d-grid justify-content-center align-items-center mb-3 pl-3">
-      <div class="mb-3 fw-20">
-        <%= form.text_field :destination , placeholder:"目的地" %>
+    <div class="field justify-content-center align-items-center mb-3" >
+      <div class="mb-3">
+        <%= form.text_field :destination , placeholder:"目的地", class:"w-100" %>
+      </div>
+      <div class="d-flex justify-content-center">
+        <div class="mb-3 mx-2">
+          <%= form.label :start_date, style: "display: block" %>
+          <%= form.datetime_field :start_date,
+                min: @planner.start_date&.strftime('%Y-%m-%dT%H:%M'),
+                max: @planner.end_date&.end_of_day&.strftime('%Y-%m-%dT%H:%M')%>
+
+        </div>
+        <div class="mb-3 mx-2">
+          <%= form.label :end_date, style: "display: block" %>
+          <%= form.datetime_field :end_date,
+                min: @planner.start_date&.strftime('%Y-%m-%dT%H:%M'),
+                max: @planner.end_date&.end_of_day&.strftime('%Y-%m-%dT%H:%M')%>
+        </div>
       </div>
       <div class="mb-3">
-        <%= form.label :start_date, style: "display: block" %>
-        <%= form.datetime_field :start_date %>
+        <%= form.number_field :cost , placeholder:"費用(数字のみ入力してください)" , class:"w-100"%>
       </div>
       <div class="mb-3">
-        <%= form.label :end_date, style: "display: block" %>
-        <%= form.datetime_field :end_date %>
+        <%= form.text_area :description , placeholder:"地点説明" , class:"w-100"%>
       </div>
       <div class="mb-3">
-        <%= form.number_field :cost , placeholder:"費用(数字のみ入力してください)" %>
-      </div>
-      <div class="mb-3">
-        <%= form.text_area :description , placeholder:"地点説明" %>
-      </div>
-      <div class="mb-3">
-        <%= form.text_field :address , placeholder:"場所" %>
+        <%= form.text_field :address , placeholder:"場所" ,class:"w-100"%>
       </div>
     </div>
 
     <div class="d-flex justify-content-center">
       <div class="actions mx-3">
-      <%= form.submit %>
+      <%= form.submit class: "btn btn-danger rounded-pill"%>
       </div>
     </div>
   <% end %>
