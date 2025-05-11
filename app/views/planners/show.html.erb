@@ -17,8 +17,8 @@
         <li class="information">
           <p class="title">旅行期間</p>
           <p class="content">
-            <span class="start"><%= l(@planner.start_date, format: :default) %></span> ~ 
-            <span class="end"><%= l(@planner.end_date, format: :default) %></span>
+            <span class="start"><%= @planner.start_date&.in_time_zone('Tokyo')&.strftime('%Y/%m/%d') || '---' %></span> ~ 
+            <span class="end"><%= @planner.end_date&.in_time_zone('Tokyo')&.strftime('%Y/%m/%d') || '---' %></span>
           </p>
         </li>
       </ul>
