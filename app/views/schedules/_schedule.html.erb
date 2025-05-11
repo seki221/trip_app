@@ -4,7 +4,7 @@
       <strong class="label-box">目的地:</strong>
       <p class="value-box"><%= schedule.destination %></p>
       <div class="ms-3">
-        <%= link_to "予定を削除", planner_schedules_path(@planner), data: { turbo_method: "delete", turbo_confirm: "削除しますか？" }, class: " btn btn-danger rounded-pill m-3 btn" %>
+        <%= link_to "予定を削除", planner_schedule_path(@planner, schedule), data: { turbo_method: "delete", turbo_confirm: "削除しますか？" }, class:"btn btn-danger rounded-pill m-3" %>
         <%= link_to 'お気に入り', class: 'btn btn-outline-warning btn-sm' %>
       </div>
     </summary>
