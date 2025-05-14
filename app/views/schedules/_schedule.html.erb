@@ -1,44 +1,52 @@
 <div id="<%= dom_id schedule %>">
   <details class="accordion-box m-5">
-    <summary class="d-flex p-3 align-items-center">
-      <strong class="label-box">目的地:</strong>
-      <p class="value-box"><%= schedule.destination %></p>
-      <div class="ms-3">
-        <%= link_to "予定を削除", planner_schedule_path(@planner, schedule), data: { turbo_method: "delete", turbo_confirm: "削除しますか？" }, class:"btn btn-danger rounded-pill m-3" %>
-        <%= link_to 'お気に入り', class: 'btn btn-outline-warning btn-sm' %>
+    <summary class="d-flex p-3 align-items-center toggle-summary">
+      <div class="d-flex">
+      <span class="toggle-indicator">▶</span>
+      <strong class="label-box">目的地</strong>
+      </div>
+      <div class="value-box-sp">
+        <p class="value-box"><%= schedule.destination %></p>
+        <div class="ms-3">
+          <%= link_to edit_planner_schedule_path(@planner, schedule), class: 'm-3 text-dark' do%>
+                    <i class='bi bi-pencil-fill'></i>
+                  <% end %>
+          <%= link_to  planner_schedule_path(@planner, schedule), data: { turbo_d: "delete", turbo_confirm: "削除しますか？" }, class: "m-3 text-dark" do %>
+                  <i class="bi bi-trash-fill"></i>
+                  <% end %>  
+          <%= link_to 'お気に入り', class: 'btn btn-outline-warning btn-sm me-3 text-dark' do%>
+          <i class="bi bi-bookmark"></i>
+          <% end %>
+        </div>
       </div>
     </summary>
-    <div class="accordion-content p-3">
-      <div class="d-flex mb-3 align-items-center">
-        <strong class="label-box">開始/到着　時刻:</strong>
+
+    <div class="accordion-body p-3">
+      <div class="d-flex mb-3 align-items-normal accordion-content">
+        <strong class="label-box">時刻</strong>
         <p class="value-box">
-          <%= schedule.start_date&.in_time_zone('Tokyo')&.strftime('%Y/%m/%d %H:%M') || '---' %>
+          <%= schedule.start_date&.in_time_zone('Tokyo')&.strftime('%Y/%m/%d %H:%M') || '' %>~<%= schedule.end_date&.in_time_zone('Tokyo')&.strftime('%Y/%m/%d %H:%M') || '' %>
         </p>
       </div>
-      <div class="d-flex mb-3 align-items-center">
-        <strong class="label-box">終了/出発予定:</strong>
-        <p class="value-box">
-          <%= schedule.end_date&.in_time_zone('Tokyo')&.strftime('%Y/%m/%d %H:%M') || '---' %>
-        </p>
-      </div>
-      <div class="d-flex mb-3 align-items-center">
-        <strong class="label-box">費用:</strong>
+      <div class="d-flex mb-3 align-items-normal accordion-content">
+        <strong class="label-box">費用</strong>
         <p class="value-box">
           <%= schedule.cost || '---' %>円
         </p>
       </div>
-      <div class="d-flex mb-3 align-items-center">
-        <strong class="label-box">地点説明:</strong>
+      <div class="d-flex mb-3 align-items-normal accordion-content">
+        <strong class="label-box">地点説明</strong>
         <p class="value-box">
           <%= schedule.description || '---' %>
         </p>
       </div>
-      <div class="d-flex mb-3 align-items-center">
-        <strong class="label-box">場所:</strong>
+      <div class="d-flex mb-3 align-items-normal accordion-content">
+        <strong class="label-box">場所</strong>
         <p class="value-box">
           <%= schedule.address || '---' %>
         </p>
       </div>
     </div>
+
   </details>
 </div>
