@@ -1,25 +1,71 @@
+/* スマホ向けスタイル */
+@media screen and (max-width: 767px) {
+summary , .accordion-content{
+  flex-direction: column;
+}
+.value-box,.ms-3{
+  margin-top: 1rem;
+}
+.align-items-normal{
+  align-items: normal;
+}
+.value-box{
+border-bottom: thick double #4d9ee4;
+margin-bottom: 0;
+}
+.value-box-sp {
+  align-items: center;
+}
+}
+@media screen and (min-width: 768px){
+.value-box {
+    margin-left: 24px;
+    padding: 16px;
+    margin-bottom: 0;
+    border: 1px solid black;
+    min-width: 200px;
+    background: #fff;
+    flex-grow: 1;
+  }
+}
 details.accordion-box {
   border: 2px dashed black;
   border-radius: 4px;
   transition: all 0.3s ease;
+  position: relative;
 }
-summary{
+
+.toggle-indicator {
+  font-size: 1.5rem;
+  transition: transform 0.2s ease;
+}
+
+details[open] .toggle-indicator {
+  transform: rotate(90deg);
+}
+
+summary {
   background-color: hsla(15, 100%, 60%, 0.296);
+  cursor: pointer;
+  list-style: none;
 }
+
+summary::-webkit-details-marker {
+  display: none;
+}
+details[open] summary,.accordion-body{
+  background-color: hsl(135, 11%, 93%);
+}
+
 .label-box {
   min-width: 180px;
   text-align: center;
   background-color: #e76f51;
-  color: white;
   padding: 8px 16px;
   border-radius: 8px;
   flex-shrink: 0;
 }
-.value-box {
-  margin-left: 24px;
-  padding:  16px;
-  margin-bottom: 0;
-  border: 1px solid black;
-  min-width: 200px;
-  flex-grow: 1;
+.value-box-sp {
+  display: flex;
+  width: 100%;
 }
