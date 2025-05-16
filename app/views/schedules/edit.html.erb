@@ -7,6 +7,5 @@
 <br>
 
 <div>
-  <%= link_to "Show this schedule", @schedule %> |
-  <%= link_to "Back to schedules", schedules_path %>
+  <%= link_to "Back to schedules", planner_schedules_path(planner_id: @planner.id) %>
 </div>
