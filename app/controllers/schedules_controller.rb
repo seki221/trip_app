@@ -10,7 +10,6 @@ class SchedulesController < ApplicationController
   # GET /schedules/1 or /schedules/1.json
   def show
     @schedule = current_user.schedule.find(params[:id])
-    @schedule = Schedule.find(params[:id])
   end
 
   # GET /schedules/new
@@ -45,7 +44,7 @@ class SchedulesController < ApplicationController
   def update
     respond_to do |format|
       if @schedule.update(schedule_params)
-        format.html { redirect_to @schedule, notice: "Schedule was successfully updated." }
+        format.html { redirect_to planner_schedules_path(@planner), notice: "Schedule was successfully updated." }
         format.json { render :show, status: :ok, location: @schedule }
       else
         format.html { render :edit, status: :unprocessable_entity }
