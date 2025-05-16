@@ -18,6 +18,9 @@
             </div>
           </div>
         <% end %>
+        <div id="<%= dom_id(planner) %>">
+          <%= render 'shared/bookmark_button', bookmarkable: planner %>
+        </div>
       </div>
     </div>
   <% end %>
