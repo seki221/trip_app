@@ -11,7 +11,7 @@
           <%= link_to edit_planner_schedule_path(@planner, schedule), class: 'm-3 text-dark' do%>
             <i class='bi bi-pencil-fill'></i>
           <% end %>
-          <%= link_to  planner_schedule_path(@planner, schedule), data: { turbo_d: "delete", turbo_confirm: "削除しますか？" }, class: "m-3 text-dark" do %>
+          <%= link_to planner_schedule_path(@planner, schedule), data: { turbo_d: "delete", turbo_confirm: "削除しますか？" }, class: "m-3 text-dark" do %>
           <i class="bi bi-trash-fill"></i>
           <% end %>  
           <div id="<%= dom_id(schedule) %>">
