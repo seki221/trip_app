@@ -1,27 +1,32 @@
-
 <div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
   <% @planners.each do |planner| %>
     <div class="col">
-      <div class="card h-100">
-        <%= link_to planner_path(planner), class: 'text-decoration-none text-dark' do %>
-          <div class="card-img-top" style="height: 120px; background-color: #e9ecef;"></div>
-          <div class="card-body text-center">
-            <h5 class="card-title"><%= planner.title %></h5>
-            <div class="d-flex flex-column mb-2">
+      <div class="card-img-top" style="height: 120px; background-color: #e9ecef;">
+      </div>
+
+      <div class="card">
+        <%= link_to planner_path(planner), class: 'card-body text-dark text-decoration-none' do %>
+        <h5 class="card-title text-center"><%= planner.title %></h5>
+          <div class="d-flex mb-2 mt-2 justify-content-center">
+            <div class= "d-flex">
               <span class="text-muted">
                 <%= planner.start_date&.in_time_zone('Tokyo')&.strftime('%Y/%m/%d') || '---' %>
               </span>
-              <span class="text-muted">~</span>
+              <p class="weib-font">~</p>
               <span class="text-muted">
                 <%= planner.end_date&.in_time_zone('Tokyo')&.strftime('%Y/%m/%d') || '---' %>
               </span>
             </div>
-          </div>
+          </div>      
         <% end %>
-        <div id="<%= dom_id(planner) %>">
+
+        <div id="<%= dom_id(planner) %>" class='ms-auto my-auto me-4 bookmark' >
           <%= render 'shared/bookmark_button', bookmarkable: planner %>
         </div>
+
       </div>
     </div>
   <% end %>
 </div>
+
+dedde
