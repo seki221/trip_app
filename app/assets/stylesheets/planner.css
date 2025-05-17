@@ -1,0 +1,14 @@
+/* スマホ向けスタイル */
+@media screen and (max-width: 767px) {
+}
+.weib-font {
+  margin: 0 1rem;
+}
+
+.card-body {
+  border-bottom: dashed
+}
+
+.bookmark{
+  z-index: 10; 
+}
