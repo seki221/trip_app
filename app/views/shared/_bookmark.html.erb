@@ -1,0 +1,3 @@
+<%= link_to bookmarks_path(bookmarkable_type: bookmarkable.class.name, bookmarkable_id: bookmarkable.id), method: :post, data: { turbo_frame: dom_id(bookmarkable) } do %>
+  <i class="bi bi-star"></i>
+<% end %>
