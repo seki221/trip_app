@@ -3,9 +3,13 @@
 
 <%= turbo_frame_tag dom_id(bookmarkable) do %>
   <% if bookmark %>
+  <div class="bookmarkable-destroy">
     <%= render 'shared/unbookmark', bookmarkable: bookmarkable, bookmark: bookmark %>
+  </div>
   <% else %>
+  <div class="bookmarkable-add">
     <%= render 'shared/bookmark', bookmarkable: bookmarkable %>
+  </div>
   <% end %>
 <% end %>
 

@@ -1,3 +1,17 @@
-<%= button_to bookmarks_path(bookmarkable_type: bookmarkable.class.name, bookmarkable_id: bookmarkable.id), method: :post, form: { data: { turbo_frame: dom_id(bookmarkable) } }, class: "btn btn-link p-0" do %>
-<i class="bi bi-star text-dark pe-2 text-decoration-none">お気に入りに追加</i>
-<% end %>
+<span class="d-none d-md-inline">
+  <%= button_to bookmarks_path(bookmarkable_type: bookmarkable.class.name, bookmarkable_id: bookmarkable.id),
+      method: :post,
+      form: { data: { turbo_frame: dom_id(bookmarkable) } },
+      class: "btn btn-link p-0" do %>
+    <i class="bi bi-star text-dark pe-2">お気に入り登録</i>
+  <% end %>
+</span>
+
+<span class="d-inline d-md-none">
+  <%= button_to bookmarks_path(bookmarkable_type: bookmarkable.class.name, bookmarkable_id: bookmarkable.id),
+      method: :post,
+      form: { data: { turbo_frame: dom_id(bookmarkable) } },
+      class: "btn btn-link p-0" do %>
+    <i class="bi bi-star text-dark"></i>
+  <% end %>
+</span>
