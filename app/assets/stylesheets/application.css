@@ -1,5 +1,12 @@
 /* スマホ向けスタイル */
 @media screen and (max-width: 767px) {
+  .sp-only {
+    display: inline;
+  }
+  .pc-only {
+    display: none;
+  }
+
 }
 /* tablet向け */
 @media screen and (max-width: 1024px) {}
@@ -22,4 +29,35 @@
 .bg-mainpage {
   background: linear-gradient(180deg, rgba(9, 9, 121, 1) 0%, rgba(6, 193, 255, 1) 74%, rgba(255, 255, 255, 1) 93%);
   height: 100%;
+}
+
+p,a{
+/* margin: 0!important; */
+text-decoration:none!important;
+/* padding: 0.5rem; */
+}
+
+/* bookmarkボタン */
+.bookmarkable-add {
+  border: solid 1px #60ee3c;
+  background-color: #60ee3c;
+}
+
+.bookmarkable-destroy {
+  border: solid 1px #ee893c;
+  background-color: #ee893c;
+}
+
+.bookmarkable-add,
+.bookmarkable-destroy {
+  padding: 0.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+}
+
+strong {
+  outline: 2px solid red;
 }
