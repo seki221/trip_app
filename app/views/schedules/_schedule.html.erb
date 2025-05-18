@@ -1,50 +1,52 @@
 <div id="<%= dom_id schedule %>">
   <details class="accordion-box m-5">
-    <summary class="d-flex p-3 align-items-center toggle-summary">
-      <div class="d-flex">
-      <span class="toggle-indicator">▶</span>
-      <strong class="label-box">目的地</strong>
+    <summary class="d-flex flex-wrap p-3 align-items-center toggle-summary">
+      <div class="order-1 me-3">
+        <span class="toggle-indicator">▶</span>
+        <strong class="label-box">目的地</strong>
       </div>
-      <div class="value-box-sp">
-        <p class="value-box"><%= schedule.destination %></p>
-        <div class="ms-3">
-          <%= link_to edit_planner_schedule_path(@planner, schedule), class: 'm-3 text-dark' do%>
-            <i class='bi bi-pencil-fill'></i>
-          <% end %>
-          <%= link_to planner_schedule_path(@planner, schedule), data: { turbo_d: "delete", turbo_confirm: "削除しますか？" }, class: "m-3 text-dark" do %>
+        <!-- タイトル -->
+      <p class="order-2 order-md-2 w-100 mt-2 text-center value-box">
+        <%= schedule.destination %>
+      </p>
+      <!-- 編集・削除・ブクマ -->
+      <div class="order-1 order-md-2 ms-auto d-flex justify-content-end">
+        <%= link_to edit_planner_schedule_path(@planner, schedule), class: 'm-2 text-dark' do %>
+          <i class='bi bi-pencil-fill'></i>
+        <% end %>
+        <%= link_to [@planner, schedule], data: { turbo_method: "delete", turbo_confirm: "削除しますか？" }, class: "btn btn-danger rounded-pill m-2" do %>
           <i class="bi bi-trash-fill"></i>
-          <% end %>  
-          <div id="<%= dom_id(schedule) %>">
-            <%= render 'shared/bookmark_button', bookmarkable: schedule %>
-          </div>
+        <% end %>
+        <div id="<%= dom_id(schedule) %>" class="my-auto">
+          <%= render 'shared/bookmark_button', bookmarkable: schedule %>
         </div>
       </div>
     </summary>
 
     <div class="accordion-body p-3">
-      <div class="d-flex mb-3 align-items-normal accordion-content">
+      <div class="mb-3 align-items-normal accordion-content">
         <strong class="label-box">時刻</strong>
-        <p class="value-box">
+        <strong class="value-box ms-3">
           <%= schedule.start_date&.in_time_zone('Tokyo')&.strftime('%Y/%m/%d %H:%M') || '' %>~<%= schedule.end_date&.in_time_zone('Tokyo')&.strftime('%Y/%m/%d %H:%M') || '' %>
-        </p>
+        </strong>
       </div>
-      <div class="d-flex mb-3 align-items-normal accordion-content">
+      <div class="flex-direction-row mb-3 align-items-normal accordion-content">
         <strong class="label-box">費用</strong>
-        <p class="value-box">
+        <strong class="value-box ms-3">
           <%= schedule.cost || '---' %>円
-        </p>
+        </strong>
       </div>
-      <div class="d-flex mb-3 align-items-normal accordion-content">
-        <strong class="label-box">地点説明</strong>
-        <p class="value-box">
+      <div class="mb-3 align-items-normal accordion-content">
+        <strong class="label-box">詳細説明</strong>
+        <strong class="value-box ms-3">
           <%= schedule.description || '---' %>
-        </p>
+        </strong>
       </div>
-      <div class="d-flex mb-3 align-items-normal accordion-content">
+      <div class="mb-3 align-items-normal accordion-content">
         <strong class="label-box">場所</strong>
-        <p class="value-box">
+        <strong class="value-box ms-3">
           <%= schedule.address || '---' %>
-        </p>
+        </strong>
       </div>
     </div>
 

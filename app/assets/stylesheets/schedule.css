@@ -1,8 +1,6 @@
 /* スマホ向けスタイル */
-@media screen and (max-width: 767px) {
-summary , .accordion-content{
-  flex-direction: column;
-}
+@media screen and (max-width: 768px) {
+
 .value-box,.ms-3{
   margin-top: 1rem;
 }
@@ -11,13 +9,23 @@ summary , .accordion-content{
 }
 .value-box{
 border-bottom: thick double #4d9ee4;
-margin-bottom: 0;
+margin-bottom: 16px;
+flex-grow: 1;
+padding: 6px;
+
 }
 .value-box-sp {
   align-items: center;
 }
+.label-box {
+    min-width: 100px;
+    text-align: center;
+    padding-top: 6px;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
 }
-@media screen and (min-width: 768px){
+@media screen and (min-width: 769px){
 .value-box {
     margin-left: 24px;
     padding: 16px;
@@ -27,7 +35,21 @@ margin-bottom: 0;
     background: #fff;
     flex-grow: 1;
   }
+  .label-box {
+  min-width: 180px;
+  text-align: center;
+  background-color: #e76f51;
+  padding: 16px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  margin: 0;
+  }
 }
+.accordion-content{
+  /* margin-bottom: 1rem; */
+  display: flex;
+}
+
 details.accordion-box {
   border: 2px dashed black;
   border-radius: 4px;
@@ -40,7 +62,7 @@ details.accordion-box {
   transition: transform 0.2s ease;
 }
 
-details[open] .toggle-indicator {
+details[open] summary .toggle-indicator {
   transform: rotate(90deg);
 }
 
@@ -55,17 +77,4 @@ summary::-webkit-details-marker {
 }
 details[open] summary,.accordion-body{
   background-color: hsl(135, 11%, 93%);
-}
-
-.label-box {
-  min-width: 180px;
-  text-align: center;
-  background-color: #e76f51;
-  padding: 8px 16px;
-  border-radius: 8px;
-  flex-shrink: 0;
-}
-.value-box-sp {
-  display: flex;
-  width: 100%;
 }
