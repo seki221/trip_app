@@ -1,7 +1,7 @@
 <div id="<%= dom_id schedule %>">
   <details class="accordion-box m-5">
     <summary class="d-flex flex-wrap p-3 align-items-center toggle-summary">
-      <div class="order-1 me-3">
+      <div class="order-1 me-3 mb-3">
         <span class="toggle-indicator">▶</span>
         <strong class="label-box">目的地</strong>
       </div>
@@ -10,7 +10,7 @@
         <%= schedule.destination %>
       </p>
       <!-- 編集・削除・ブクマ -->
-      <div class="order-1 order-md-2 ms-auto d-flex justify-content-end">
+      <div class="order-1 order-md-1 ms-auto d-flex justify-content-end">
         <%= link_to edit_planner_schedule_path(@planner, schedule), class: 'm-2 text-dark' do %>
           <i class='bi bi-pencil-fill'></i>
         <% end %>
