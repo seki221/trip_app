@@ -10,6 +10,25 @@
 }
 /* tablet向け */
 @media screen and (max-width: 1024px) {}
+/* スマホ以外 */
+@media screen and (min-width: 992px)
+{
+  .nav-link {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 0 0 24px;
+      color: #000000;
+      line-height: 1;
+    }
+  
+    .nav-link p {
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 0;
+    }
+}
 /* メインページロゴ */
 .site-logo{
   color: #B31667;
@@ -19,6 +38,7 @@
   margin-top: 0;
   
 }
+
 .header-logo {
   color: #B31667;
   font-family: "Nico Moji";
@@ -58,6 +78,6 @@ text-decoration:none!important;
   text-decoration: none;
 }
 
-strong {
+/* strong {
   outline: 2px solid red;
-}
+} */

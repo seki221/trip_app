@@ -1,9 +1,9 @@
 <header id="header" class="header fixed top-0 left-0 z-50" >
-  <nav class="navbar navbar-expand-lg bg-success" style="height: fit-content;--bs-bg-opacity: .3;">
+  <nav class="navbar navbar-expand-lg bg-success h-100" style="height: fit-content;--bs-bg-opacity: .3;">
     <div class="container-fluid d-flex justify-content-between align-items-center">
       <% if current_user.present? %>
       <!-- 左端ロゴ -->
-      <%= link_to root_path, class: 'header-logo ms-4' do %>
+      <%= link_to root_path, class: 'header-logo ms-4 py-3' do %>
         たびログ
       <% end %>
 
@@ -13,25 +13,43 @@
       </button>
 
       <!-- 展開するナビゲーション -->
-      <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo03">
+      <div class="collapse navbar-collapse justify-content-end me-5" id="navbarTogglerDemo03">
         <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item">
-            <%= link_to 'Home', root_path, class: 'nav-link text-dark fs-6 fw-bold' %>
+            
+              <%= link_to planners_path, class: 'nav-link d-flex' do %>
+                <span class="Xmedium_icon"><i class="bi bi-book-fill"></i></span>
+                <p>思い出ボックス</p>
+              <% end %>
+            
           </li>
           <li class="nav-item">
-            <%= link_to 'マイページ', root_path, class: 'nav-link text-dark fs-6 fw-bold' %>
+            <%= link_to bookmarks_path, class: 'nav-link d-flex' do %>
+              <span class="Xmedium_icon"><i class="bi bi-star"></i></span>
+              <p>bookmark</p>
+            <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to '思い出ボックス', planners_path, class: 'nav-link text-dark fs-6 fw-bold' %>
+            
+              <%= link_to planners_path, class: 'nav-link d-flex' do %>
+                <span><i class="bi bi-book"></i></span>
+                <p>アプリの説明</p>
+              <% end %>
+            
           </li>
           <li class="nav-item">
-            <%= link_to 'bookmark', bookmarks_path, class: 'nav-link text-dark fs-6 fw-bold' %>
+            
+              <%= link_to root_path, class: 'nav-link d-flex' do %>
+              <span class="Xmedium_icon"><i class="bi bi-person-circle"></i></span>
+              <p>マイページ</p>
+              <% end %>
+            
           </li>
           <li class="nav-item">
-            <%= link_to 'このアプリについて', root_path, class: 'nav-link text-dark fs-6 fw-bold' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-dark fs-6 fw-bold' %>
+            <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link d-flex' do %>
+              <span class="Xmedium_icon"><i class="bi bi-box-arrow-right"></i></span>
+              <p>ログアウト</p>
+            <% end %>
           </li>
         </ul>
       </div>
