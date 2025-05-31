@@ -1,6 +1,6 @@
-<header id="header" class="fixed top-0 left-0 z-50">
-  <nav class="navbar navbar-expand-lg bg-light" style="height: fit-content;">
-    <div class="container-fluid bg-light d-flex justify-content-between align-items-center">
+<header id="header" class="header fixed top-0 left-0 z-50" >
+  <nav class="navbar navbar-expand-lg bg-success" style="height: fit-content;--bs-bg-opacity: .3;">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
       <% if current_user.present? %>
       <!-- 左端ロゴ -->
       <%= link_to root_path, class: 'header-logo ms-4' do %>
@@ -8,7 +8,7 @@
       <% end %>
 
       <!-- トグルボタンは右端 -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -16,19 +16,22 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo03">
         <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item">
-            <%= link_to 'Home', root_path, class: 'nav-link' %>
+            <%= link_to 'Home', root_path, class: 'nav-link text-dark fs-6 fw-bold' %>
           </li>
           <li class="nav-item">
-            <%= link_to 'マイページ', root_path, class: 'nav-link' %>
+            <%= link_to 'マイページ', root_path, class: 'nav-link text-dark fs-6 fw-bold' %>
           </li>
           <li class="nav-item">
-            <%= link_to '思い出ボックス', planners_path, class: 'nav-link' %>
+            <%= link_to '思い出ボックス', planners_path, class: 'nav-link text-dark fs-6 fw-bold' %>
           </li>
           <li class="nav-item">
-            <%= link_to 'このアプリについて', root_path, class: 'nav-link' %>
+            <%= link_to 'bookmark', bookmarks_path, class: 'nav-link text-dark fs-6 fw-bold' %>
           </li>
           <li class="nav-item">
-            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+            <%= link_to 'このアプリについて', root_path, class: 'nav-link text-dark fs-6 fw-bold' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-dark fs-6 fw-bold' %>
           </li>
         </ul>
       </div>

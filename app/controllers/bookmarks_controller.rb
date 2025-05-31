@@ -1,6 +1,14 @@
 class BookmarksController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @bookmarks = current_user.bookmarks.includes(:bookmarkable)
+
+    if params[:type_filter].present?
+      @bookmarks = @bookmarks.where(bookmarkable_type: params[:type_filter])
+    end
+  end
+
   def create
     @bookmarkable = find_bookmarkable
     @bookmark = @bookmarkable.bookmarks.new(user: current_user)

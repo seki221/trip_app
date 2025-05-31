@@ -1,0 +1,23 @@
+<h2>ブックマーク一覧</h2>
+
+<div class="mb-3">
+  <%= form_with url: bookmarks_path, method: :get, local: true, class: "d-flex align-items-center" do |form| %>
+    <label class="me-2">種類で絞り込み:</label>
+    <%= form.select :type_filter,
+      options_for_select([
+        ['すべて', ''],
+        ['プランナー', 'Planner'],
+        ['スケジュール', 'Schedule']
+      ], params[:type_filter]),
+      {}, class: "form-select w-auto me-2" %>
+    <%= form.submit "表示", class: "btn btn-outline-primary btn-sm" %>
+  <% end %>
+</div>
+
+<% if @bookmarks.empty? %>
+  <p>ブックマークはありません。</p>
+<% else %>
+  <% @bookmarks.each do |bookmark| %>
+    <%= render partial: 'bookmark', locals: { bookmark: bookmark } %>
+  <% end %>
+<% end %>

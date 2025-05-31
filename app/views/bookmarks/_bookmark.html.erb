@@ -1,0 +1,8 @@
+<div class="border p-2 mb-2 rounded">
+  <% case bookmark.bookmarkable_type %>
+  <% when 'Planner' %>
+    <p>プラン: <%= link_to bookmark.bookmarkable.title, planner_path(bookmark.bookmarkable) %></p>
+  <% when 'Schedule' %>
+    <p>予定: <%= link_to bookmark.bookmarkable.title, planner_schedule_path(bookmark.bookmarkable.planner, bookmark.bookmarkable) %></p>
+  <% end %>
+</div>
