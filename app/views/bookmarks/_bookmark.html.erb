@@ -1,8 +1,14 @@
-<div class="border p-2 mb-2 rounded">
-  <% case bookmark.bookmarkable_type %>
-  <% when 'Planner' %>
-    <p>プラン: <%= link_to bookmark.bookmarkable.title, planner_path(bookmark.bookmarkable) %></p>
-  <% when 'Schedule' %>
-    <p>予定: <%= link_to bookmark.bookmarkable.title, planner_schedule_path(bookmark.bookmarkable.planner, bookmark.bookmarkable) %></p>
-  <% end %>
+<div class="bookmark-list mx-5">
+  <div class="bd-example m-0 border-0">
+    <% case bookmark.bookmarkable_type %>
+    <% when 'Planner' %>
+    <div class="p-3 mb-2 bg-warning-subtle rounded">
+      <p class="mb-0">プラン: <%= link_to bookmark.bookmarkable.title, planner_path(bookmark.bookmarkable) %></p>
+    </div>
+    <% when 'Schedule' %>
+    <div class="p-3 mb-2 rounded bg-success-subtle">
+      <p class="m-0">予定: <%= link_to bookmark.bookmarkable.destination, planner_schedules_path(bookmark.bookmarkable.planner, bookmark.bookmarkable) %></p>
+    </div>
+    <% end %>
+  </div>
 </div>
