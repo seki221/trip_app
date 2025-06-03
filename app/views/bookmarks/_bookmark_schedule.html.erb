@@ -1,0 +1,11 @@
+<div class="p-3 mb-2 rounded bg-success-subtle">
+  <p class="m-0">工程: 
+  <%= link_to bookmark.bookmarkable.destination, planner_schedules_path(bookmark.bookmarkable.planner, bookmark.bookmarkable) %>
+  </p>
+
+  <%= form_with url: create_schedule_bookmark_path(bookmark), method: :post, local: true do |f| %>
+    <p class="mt-2">どのプランに追加しますか？</p>
+    <%= select_tag :planner_id, options_for_select(current_user.planners.pluck(:title, :id)) %>
+    <%= f.submit "追加", class: "btn btn-sm btn-outline-primary ms-2" %>
+  <% end %>
+</div>

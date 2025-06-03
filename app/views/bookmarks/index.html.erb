@@ -15,10 +15,36 @@
   </div>
 </div>
 
-<% if @bookmarks.empty? %>
-  <p>ブックマークはありません。</p>
-<% else %>
-  <% @bookmarks.each do |bookmark| %>
-    <%= render partial: 'bookmark', locals: { bookmark: bookmark } %>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <%= link_to "すべて", bookmarks_path, class: "nav-link #{'active' if params[:type_filter].blank?}" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "プランナー", bookmarks_path(type_filter: "Planner"), class: "nav-link #{'active' if params[:type_filter] == 'Planner'}" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "スケジュール", bookmarks_path(type_filter: "Schedule"), class: "nav-link #{'active' if params[:type_filter] == 'Schedule'}" %>
+  </li>
+</ul>
+
+
+<div id="bookmarks" class="m-5">
+  <% if @type_filter == "Planner" %>
+    <% @planners.each do |bookmark| %>
+      <%= render "bookmarks/bookmark_planner", bookmark: bookmark %>
+    <% end %>
+
+  <% elsif @type_filter == "Schedule" %>
+    <% @schedules.each do |bookmark| %>
+      <%= render "bookmarks/bookmark_schedule", bookmark: bookmark %>
+    <% end %>
+
+  <% else %>
+    <% @planners.each do |bookmark| %>
+      <%= render "bookmarks/bookmark_planner", bookmark: bookmark %>
+    <% end %>
+    <% @schedules.each do |bookmark| %>
+      <%= render "bookmarks/bookmark_schedule", bookmark: bookmark %>
+    <% end %>
   <% end %>
-<% end %>
+</div>
