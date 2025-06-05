@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_05_29_113030) do
+ActiveRecord::Schema[7.2].define(version: 2025_06_04_003612) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -34,6 +34,16 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_29_113030) do
     t.datetime "updated_at", null: false
     t.string "visibility", default: "private"
     t.index ["user_id"], name: "index_planners_on_user_id"
+  end
+
+  create_table "reschedules", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "original_schedule_id", null: false
+    t.uuid "planner_id", null: false
+    t.uuid "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["planner_id"], name: "index_reschedules_on_planner_id"
+    t.index ["user_id"], name: "index_reschedules_on_user_id"
   end
 
   create_table "schedules", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -72,6 +82,9 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_29_113030) do
 
   add_foreign_key "bookmarks", "users"
   add_foreign_key "planners", "users"
+  add_foreign_key "reschedules", "planners"
+  add_foreign_key "reschedules", "schedules", column: "original_schedule_id"
+  add_foreign_key "reschedules", "users"
   add_foreign_key "schedules", "planners"
   add_foreign_key "schedules", "users"
 end
