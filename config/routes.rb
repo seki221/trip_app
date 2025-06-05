@@ -5,7 +5,13 @@ Rails.application.routes.draw do
   devise_scope :user do
     get "/users/sign_out" => "devise/sessions#destroy"
   end
-  resources :bookmarks, only: [ :index, :create, :destroy ]
+
+  resources :bookmarks, only: [ :index, :create, :destroy ] do
+    post :create_schedule, on: :member
+  end
+
+  resources :reschedules, only: [ :create ]
+
 
   resources :planners, only: %i[index new create show edit update destroy] do
     resources :schedules, only: %i[index new create show edit update destroy]
