@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     get "/users/sign_out" => "devise/sessions#destroy"
   end
 
+  get "sitelists", to: "sitelists#index"
+
   resources :bookmarks, only: [ :index, :create, :destroy ] do
     post :create_schedule, on: :member
   end
