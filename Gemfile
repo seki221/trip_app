@@ -61,3 +61,5 @@ end
 gem "devise"
 
 gem "dotenv-rails", groups: [ :development, :test, :production ]
+
+gem "rspec-rails", "~> 8.0"
