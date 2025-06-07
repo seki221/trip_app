@@ -99,3 +99,5 @@ jobs:
           name: screenshots
           path: ${{ github.workspace }}/tmp/screenshots
           if-no-files-found: ignore
+      - name: Rubocop
+        run: bundle exec rubocop
