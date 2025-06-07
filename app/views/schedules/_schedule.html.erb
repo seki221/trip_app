@@ -1,16 +1,18 @@
 <div id="<%= dom_id schedule %>">
   <details class="accordion-box m-5">
-    <summary class="d-flex flex-wrap p-3 align-items-center toggle-summary">
-      <div class="order-1 me-3 mb-3">
-        <span class="toggle-indicator">▶</span>
-        <strong class="label-box">目的地</strong>
+    <summary class="d-flex p-3 align-items-center toggle-summary">
+      <span class="toggle-indicator">▶</span>
+      <div class="mx-3 mb-3">
+        <strong class="">
+          <%= schedule.start_date&.in_time_zone('Tokyo')&.strftime('%Y/%m/%d %H:%M') || '' %>~<%= schedule.end_date&.in_time_zone('Tokyo')&.strftime('%Y/%m/%d %H:%M') || '' %>
+        </strong>
       </div>
         <!-- タイトル -->
-      <p class="order-2 order-md-2 w-100 mt-2 text-center value-box">
+      <p class="w-100 mt-2 me-3 text-center value-box">
         <%= schedule.destination %>
       </p>
       <!-- 編集・削除・ブクマ -->
-      <div class="order-1 order-md-1 ms-auto d-flex justify-content-end">
+      <div class="order-md-1 ms-auto d-flex justify-content-end">
         <%= link_to edit_planner_schedule_path(@planner, schedule), class: 'm-2 text-dark' do %>
           <i class='bi bi-pencil-fill'></i>
         <% end %>
@@ -24,12 +26,6 @@
     </summary>
 
     <div class="accordion-body p-3">
-      <div class="mb-3 align-items-normal accordion-content">
-        <strong class="label-box">時刻</strong>
-        <strong class="value-box ms-3">
-          <%= schedule.start_date&.in_time_zone('Tokyo')&.strftime('%Y/%m/%d %H:%M') || '' %>~<%= schedule.end_date&.in_time_zone('Tokyo')&.strftime('%Y/%m/%d %H:%M') || '' %>
-        </strong>
-      </div>
       <div class="flex-direction-row mb-3 align-items-normal accordion-content">
         <strong class="label-box">費用</strong>
         <strong class="value-box ms-3">
@@ -37,15 +33,15 @@
         </strong>
       </div>
       <div class="mb-3 align-items-normal accordion-content">
-        <strong class="label-box">詳細説明</strong>
-        <strong class="value-box ms-3">
-          <%= schedule.description || '---' %>
-        </strong>
-      </div>
-      <div class="mb-3 align-items-normal accordion-content">
         <strong class="label-box">場所</strong>
         <strong class="value-box ms-3">
           <%= schedule.address || '---' %>
+        </strong>
+      </div>
+      <div class="mb-3 align-items-normal accordion-content">
+        <strong class="label-box">詳細説明</strong>
+        <strong class="value-box ms-3">
+          <%= schedule.description || '---' %>
         </strong>
       </div>
     </div>
