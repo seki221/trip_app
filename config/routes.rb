@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :reschedules, only: [ :create ]
 
 
-  resources :planners, only: %i[index new create show edit update destroy] do
+  resources :planners, only: %i[index new create edit update destroy] do
     resources :schedules, only: %i[index new create show edit update destroy]
   end
 end

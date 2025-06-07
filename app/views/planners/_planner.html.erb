@@ -5,7 +5,7 @@
       </div>
 
       <div class="card">
-        <%= link_to planner_path(planner), class: 'card-body text-dark text-decoration-none' do %>
+        <%= link_to planner_schedules_path(planner), class: "card-body text-dark text-decoration-none" do %>
         <h5 class="card-title text-center"><%= planner.title %></h5>
           <div class="d-flex mb-2 mt-2 justify-content-center">
             <div class= "d-flex">
@@ -19,9 +19,16 @@
             </div>
           </div>      
         <% end %>
-
-        <div id="<%= dom_id(planner) %>" class='ms-auto me-4 m-2' >
-          <%= render 'shared/bookmark_button', bookmarkable: planner %>
+        <div class="d-flex ms-auto">
+          <div id="<%= dom_id(planner) %>" class='me-4 m-2' >
+            <%= render 'shared/bookmark_button', bookmarkable: planner %>
+          </div>
+          <%= link_to edit_planner_path(planner), class: 'm-2 pt-2 text-dark' do %>
+            <i class='bi bi-pencil-fill'></i>
+          <% end %>
+          <%= link_to (planner), data: { turbo_method: "delete", turbo_confirm: "削除しますか？" }, class: "btn btn-danger rounded-pill m-2" do %>
+            <i class="bi bi-trash-fill"></i>
+          <% end %>
         </div>
       </div>
     </div>

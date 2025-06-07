@@ -26,7 +26,7 @@ class PlannersController < ApplicationController
 
     respond_to do |format|
       if @planner.save
-        format.html { redirect_to @planner, notice: "作ったで." }
+        format.html { redirect_to planner_schedules_path(@planner), notice: "Planner was successfully created." }
         format.json { render :show, status: :created, location: @planner }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,8 @@ class PlannersController < ApplicationController
   def update
     respond_to do |format|
       if @planner.update(planner_params)
-        format.html { redirect_to @planner, notice: "Planner was successfully updated." }
+        # format.html { redirect_to @planner, notice: "Planner was successfully updated." }
+        format.html { redirect_to planners_path(@planner), notice: "Planner was successfully updated." }
         format.json { render :show, status: :ok, location: @planner }
       else
         format.html { render :edit, status: :unprocessable_entity }
