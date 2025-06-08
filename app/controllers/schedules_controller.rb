@@ -1,16 +1,25 @@
 class SchedulesController < ApplicationController
-  before_action :set_schedule, only: %i[ show edit update destroy ]
+  before_action :set_schedule, only: %i[ edit update destroy ]
   before_action :set_planner
 
   # GET /schedules or /schedules.json
   def index
-    @schedules = Schedule.all
+    @schedules = @planner.schedules.order(:start_date)
+
+    @planner = Planner.find(params[:planner_id])
+    case params[:sort]
+    when "asc"
+      @schedules = @planner.schedules.sort_old
+    when "desc"
+      @schedules = @planner.schedules.sort_new
+    else
+      @schedules = @planner.schedules
+    end
+    @schedule = Schedule.new
   end
 
   # GET /schedules/1 or /schedules/1.json
-  def show
-    @schedule = current_user.schedule.find(params[:id])
-  end
+
 
   # GET /schedules/new
   def new

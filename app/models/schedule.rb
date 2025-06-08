@@ -5,11 +5,17 @@ class Schedule < ApplicationRecord
 
   validate :dates_within_planner_range
 
+  scope :sort_new, -> { order(start_date: :desc) }
+  scope :sort_old, -> { order(start_date: :asc) }
+
   def dates_within_planner_range
     return if planner.blank?
 
-    if start_date.present? && start_date < planner.start_date ||
-      end_date.present? && end_date > planner.end_date
+    # planner.end_date を1日の終わりとして評価
+    range_end = planner.end_date.end_of_day
+
+    if start_date.present? && start_date < planner.start_date.beginning_of_day ||
+      end_date.present? && end_date > range_end
       errors.add(:base, "スケジュールはしおりの日付内で設定してください")
     end
   end

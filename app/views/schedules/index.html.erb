@@ -1,13 +1,20 @@
-<p style="color: green"><%= notice %></p>
+<div class="schedule m-5">
+  <p style="color: green"><%= notice %></p>
 
-<% content_for :title, "Schedules" %>
+  <% content_for :title, "Schedules" %>
 
-<h1>Schedules</h1>
+  <h1>Schedules</h1>
 
-<%= link_to "スケジュール作成", new_planner_schedule_path(planner_id: @planner.id), class: "btn border-danger rounded-pill m-3"%>
-<div id="schedules">
-  <% @planner.schedules.each do |schedule| %>
-    <%= render schedule%>
-    
-  <% end %>
+  <%= link_to "スケジュール作成", new_planner_schedule_path(planner_id: @planner.id), class: "btn border-danger rounded-pill m-3"%>
+  <p>
+  <%= link_to '早い順', planner_schedules_path(@planner, sort: 'asc') %> |
+  <%= link_to '遅い順', planner_schedules_path(@planner, sort: 'desc') %>
+</p>
+
+  <div id="schedules">
+    <% @schedules.each do |schedule| %>
+
+      <%= render schedule%>
+    <% end %>
+  </div>
 </div>
