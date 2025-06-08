@@ -32,6 +32,8 @@ ja:
     planners:
       create: "作成したよ"
       update: "更新しました"
+    schedules:
+      edit: "更新"
   date:
     formats:
       default: "%Y.%m.%d.(%a)"
