@@ -46,4 +46,3 @@ yarn-debug.log*
 .yarn-integrity
 package-lock.json
 *.keep
-app/assets/builds/tailwind.css
