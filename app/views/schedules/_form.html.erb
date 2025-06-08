@@ -3,7 +3,6 @@
     <% if schedule.errors.any? %>
       <div style="color: red">
         <h2><%= pluralize(schedule.errors.count, "error") %> prohibited this schedule from being saved:</h2>
-
         <ul>
           <% schedule.errors.each do |error| %>
             <li><%= error.full_message %></li>
@@ -11,41 +10,44 @@
         </ul>
       </div>
     <% end %>
-    <div class="field justify-content-center align-items-center mb-3" >
+
+    <div class="field justify-content-center align-items-center mb-3">
       <div class="mb-3">
-        <%= form.text_field :destination , placeholder:"目的地", class:"w-100" %>
+        <%= form.text_field :destination, placeholder: "目的地", class: "w-100", id: "destination" %>
       </div>
+
       <div class="d-flex justify-content-center">
         <div class="mb-3 mx-2">
           <%= form.label :start_date, style: "display: block" %>
           <%= form.datetime_field :start_date,
                 min: @planner.start_date&.strftime('%Y-%m-%dT%H:%M'),
-                max: @planner.end_date&.end_of_day&.strftime('%Y-%m-%dT%H:%M')%>
-
+                max: @planner.end_date&.end_of_day&.strftime('%Y-%m-%dT%H:%M') %>
         </div>
         <div class="mb-3 mx-2">
           <%= form.label :end_date, style: "display: block" %>
           <%= form.datetime_field :end_date,
                 min: @planner.start_date&.strftime('%Y-%m-%dT%H:%M'),
-                max: @planner.end_date&.end_of_day&.strftime('%Y-%m-%dT%H:%M')%>
+                max: @planner.end_date&.end_of_day&.strftime('%Y-%m-%dT%H:%M') %>
         </div>
       </div>
+
       <div class="mb-3">
-        <%= form.number_field :cost , placeholder:"費用(数字のみ入力してください)" , class:"w-100"%>
+        <%= form.number_field :cost, placeholder: "費用(数字のみ入力してください)", class: "w-100" %>
       </div>
+
       <div class="mb-3">
-        <%= form.text_area :description , placeholder:"地点説明" , class:"w-100"%>
+        <%= form.text_area :description, placeholder: "地点説明", class: "w-100" %>
       </div>
+
       <div class="mb-3">
-        <%= form.text_field :address, id:"autocomplete", placeholder:"場所" ,class:"w-100"%>
+        <%= form.text_field :address, id: "address", placeholder: "場所", class: "w-100" %>
       </div>
     </div>
 
     <div class="d-flex justify-content-center">
       <div class="actions mx-3">
-      <%= form.submit class: "btn btn-danger rounded-pill"%>
+        <%= form.submit class: "btn btn-danger rounded-pill" %>
       </div>
     </div>
   <% end %>
 </div>
-

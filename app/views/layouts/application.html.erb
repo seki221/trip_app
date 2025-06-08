@@ -37,24 +37,8 @@
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAPS_API_KEY"] %>&libraries=places&callback=initAutocomplete" async defer></script>
-    <script>
-      function initAutocomplete() {
-        const input = document.getElementById('autocomplete');
-        const options = {
-          // 必要に応じて国や種類で制限
-          // componentRestrictions: { country: "jp" },
-          fields: ["place_id", "geometry", "name"],
-          types: ["establishment"]  // または "geocode", "address", "cities" など
-        };
-        const autocomplete = new google.maps.places.Autocomplete(input, options);
-
-        autocomplete.addListener("place_changed", function () {
-          const place = autocomplete.getPlace();
-          console.log(place);
-          // 必要に応じてplace_idや緯度経度などをフォームに埋め込む
-        });
-      }
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAPS_API_KEY"] %>&libraries=places&callback=initAutocomplete">
     </script>
 
   </head>
