@@ -63,3 +63,7 @@ gem "devise"
 gem "dotenv-rails", groups: [ :development, :test, :production ]
 
 gem "rspec-rails", "~> 8.0"
+
+gem "gon", "~> 6.4"
+
+gem "geocoder", "~> 1.8"
