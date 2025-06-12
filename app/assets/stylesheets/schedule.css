@@ -9,10 +9,9 @@
 }
 .value-box{
 border-bottom: thick double #4d9ee4;
-margin-bottom: 16px;
 flex-grow: 1;
-padding: 6px;
-
+padding: 0px;
+margin: 0px;
 }
 .value-box-sp {
   align-items: center;
@@ -23,18 +22,51 @@ padding: 6px;
     padding-top: 6px;
     border-radius: 8px;
     flex-shrink: 0;
+    margin: 0px;
+  }
+  .sp{
+    display: inline-grid;
+  }
+    .sp_none  {
+    display: none;
+  }
+  .schedule{
+    margin: .25rem;
   }
 }
 @media screen and (min-width: 769px){
-.value-box {
-    margin-left: 24px;
-    padding: 16px;
-    margin-bottom: 0;
-    border: 1px solid black;
-    min-width: 200px;
-    background: #fff;
-    flex-grow: 1;
+.schedule {
+    margin: 3rem;
   }
+.under {
+  background: linear-gradient(transparent 70%, #ff99ab 70%);
+  }
+.value-box {
+  display: inline-block;
+  /* margin-left: 24px; */
+  /* margin-bottom: 0; */
+  margin: 0 3rem  0 3rem;
+  padding: 16px;
+  min-width: 200px;
+  flex-grow: 1;--radius: 16px;
+  background: linear-gradient(135deg, transparent 15px, #f0f0f0 0) top left,
+      linear-gradient(-135deg, transparent 15px, #f0f0f0 0) top right,
+      linear-gradient(-45deg, transparent 15px, #f0f0f0 0) bottom right,
+      linear-gradient(45deg, transparent 15px, #f0f0f0 0) bottom left;
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
+  }
+
+  details[open] .value-box {
+    background: linear-gradient(135deg, transparent 15px, #000 0) top left,
+      linear-gradient(-135deg, transparent 15px, #000 0) top right,
+      linear-gradient(-45deg, transparent 15px, #000 0) bottom right,
+      linear-gradient(45deg, transparent 15px, #000 0) bottom left;
+      background-size: 50% 50%;
+        background-repeat: no-repeat;
+      color:#fff;
+  }
+
   .label-box {
   min-width: 180px;
   text-align: center;
@@ -42,7 +74,7 @@ padding: 6px;
   padding: 16px;
   border-radius: 8px;
   flex-shrink: 0;
-  margin: 0;
+  margin: 0 3rem 0 3rem;
   max-height: fit-content
   }
 }

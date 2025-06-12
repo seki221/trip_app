@@ -1,9 +1,6 @@
 /* スマホ向けスタイル */
 @media screen and (max-width: 767px) {
-  .sp-only {
-    display: inline;
-  }
-  .pc-only {
+  .pc {
     display: none;
   }
 
