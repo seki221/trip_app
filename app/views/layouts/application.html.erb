@@ -38,18 +38,48 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
 
     <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAPS_API_KEY"] %>&libraries=places&callback=initAutocomplete">
+      src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAPS_API_KEY"] %>&libraries=places&callback=initAutocomplete&callback=initMap">
+    </script>
+
+    <script>
+      function initMap() {
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 10,
+          center: { lat: 35.681236, lng: 139.767125 }, // 仮の中心: 東京駅
+        });
+
+        const geocoder = new google.maps.Geocoder();
+
+        const locations = <%= raw @map_data.to_json %>;
+
+        locations.forEach(location => {
+          geocoder.geocode({ address: location.address }, (results, status) => {
+            if (status === "OK") {
+              new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location,
+                title: location.title,
+              });
+            } else {
+              console.error("Geocode failed: " + status);
+            }
+          });
+        });
+      }
     </script>
 
   </head>
 
-  <body>
+  <body class="">
     <% if user_signed_in? %>
       <%= render 'shared/header' %>
     <% else %>
       <%= render 'shared/before_login_header' %>
     <% end %>
-    <%= yield %>
-    <%= render 'shared/footer' %>
+    
+    <main class="wrappre">
+      <%= yield %>
+    </main>
   </body>
+    <%= render 'shared/footer' %>
 </html>

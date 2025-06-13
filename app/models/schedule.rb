@@ -1,4 +1,7 @@
 class Schedule < ApplicationRecord
+  before_save :set_coordinates
+  before_save :geocode
+
   belongs_to :user
   belongs_to :planner
   has_many :bookmarks, as: :bookmarkable, dependent: :destroy
@@ -7,7 +10,6 @@ class Schedule < ApplicationRecord
 
   scope :sort_new, -> { order(start_date: :desc) }
   scope :sort_old, -> { order(start_date: :asc) }
-
   def dates_within_planner_range
     return if planner.blank?
 
@@ -27,6 +29,15 @@ class Schedule < ApplicationRecord
       errors.add(:base, "開始日か終了日のどちらかを入力してください")
     elsif start_date.present? && end_date.present? && start_date > end_date
       errors.add(:base, "開始日は終了日より前にしてください")
+    end
+  end
+
+  def set_coordinates
+    return if latitude.present? && longitude.present?
+    results = Geocoder.search(self.address)
+    if results.first
+      self.latitude = results.first.latitude
+      self.longitude = results.first.longitude
     end
   end
 end

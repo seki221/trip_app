@@ -16,6 +16,11 @@ class SchedulesController < ApplicationController
       @schedules = @planner.schedules
     end
     @schedule = Schedule.new
+
+    # Map用データ（住所をJSに渡す）
+    @map_data = @schedules.map do |s|
+      { destination: s.destination, address: s.address }
+    end
   end
 
   # GET /schedules/1 or /schedules/1.json
@@ -80,7 +85,7 @@ class SchedulesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def schedule_params
-      params.require(:schedule).permit(:user_id, :planner_id, :destination, :start_date, :end_date, :cost, :description, :address)
+      params.require(:schedule).permit(:user_id, :planner_id, :destination, :start_date, :end_date, :cost, :description, :address, :latitude, :longitude)
     end
 
     def set_planner
