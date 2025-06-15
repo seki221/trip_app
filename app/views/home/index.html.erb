@@ -1,5 +1,15 @@
-<div class="bg-mainpage">
-  <div class="title-section">
-    <h1 class='site-logo text-center'>たびログ</h1>
+<div class="wrappre">
+  <div class="bg-mainpage">
+    <div class="title-section py-5">
+      <h1 class='site-logo text-center my-5'>たびログ</h1>
+    </div>
+
+    <div class="session text-center bg-opacity-10 m-5">
+      <div class="registrations"><%= link_to t('devise.shared.links.sign_up'), new_user_registration_path, class:'m-auto fs-4 fw-bold btn rounded-pill border-dark m-3 btn-opacity-50' %>
+      </div>
+      <div class="sessions mt-4">
+        <%= link_to t('devise.shared.links.sign_in'), new_user_session_path, class:' m-auto fs-4 fw-bold btn rounded-pill border-dark m-3 btn-opacity-50' %>
+      </div>
+    </div>
   </div>
 </div>
