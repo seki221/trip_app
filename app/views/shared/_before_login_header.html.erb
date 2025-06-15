@@ -8,17 +8,13 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <div class="collapse navbar-collapse me-5" id="navbarTogglerDemo03">
         <ul class="navbar-nav mb-2 mb-lg-0 ms-auto ">
-          <li class="nav-item ">
-            <%= link_to 'Home' , root_path, class: 'nav-link' %>
-          </li>
           <li class="nav-item">
-            <%= link_to 'マイページ', root_path , class: 'nav-link' %>
-          </li>
-          
-          <li class="nav-item before-login">
-          <%= link_to "思い出ボックス", planners_path, class: 'nav-link text-dark' %>
+            <%= link_to planners_path, class: 'nav-link d-flex' do %>
+              <span><i class="bi bi-book"></i></span>
+              <p>アプリの説明</p>
+            <% end %>
           </li>
           <!-- session -->
           
@@ -33,14 +29,8 @@
               <li>
                 <%= link_to t('devise.shared.links.sign_up'), new_user_registration_path, class: 'dropdown-item' %>
               </li>
-              <li>
-                <%= link_to "ゲストログイン", new_user_registration_path, method: :post, class: 'dropdown-item' %>
-              </li>
             </ul>
           </ul>
-          <li class="nav-item">
-            <%= link_to 'このアプリについて', root_path , class: 'nav-link' %>
-          </li>
         </ul>
       </div>
     </div>
