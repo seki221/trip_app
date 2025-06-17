@@ -8,3 +8,7 @@
 .card-body {
   border-bottom: dashed
 }
+.card{
+  border-top-left-radius: 0mm!important;
+  border-top-right-radius: 0mm !important;
+}
