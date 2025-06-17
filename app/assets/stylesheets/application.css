@@ -10,21 +10,6 @@
 /* スマホ以外 */
 @media screen and (min-width: 992px)
 {
-  .nav-link {
-      display: flex;
-      flex-flow: column;
-      align-items: center;
-      justify-content: center;
-      margin: 0 0 0 24px;
-      color: #000000;
-      line-height: 1;
-    }
-  
-    .nav-link p {
-      font-size: 12px;
-      font-weight: bold;
-      margin-bottom: 0;
-    }
 }
 html
 {
@@ -52,22 +37,14 @@ body {
   
 }
 
-.header-logo {
-  color: #B31667;
-  font-family: "Nico Moji";
-  font-size: 30px;
-  text-decoration-line:none
-}
 /* メインページ背景色 */
 .bg-mainpage {
-  background: linear-gradient(180deg, rgba(9, 9, 121, 1) 0%, rgba(6, 193, 255, 1) 78%, rgba(255, 255, 255, 1) 64%);
+  background: linear-gradient(180deg, rgba(9, 9, 121, 1) 0%, rgba(6, 193, 255, 1) 78%, rgba(255, 255, 255, 1) 93%);
   height: 100vh
 }
 
 p,a{
-/* margin: 0!important; */
-text-decoration:none!important;
-/* padding: 0.5rem; */
+  text-decoration:none!important;
 }
 
 /* bookmarkボタン */
@@ -92,9 +69,15 @@ text-decoration:none!important;
 }
 
 .registrations .btn,.sessions .btn{
-  background: rgba(255, 0, 0, 0.5);
-  /* height: 60px; */
-  /* width: 60%; */
-  /* margin: auto; */
-  /* text-align: center; */
+  background: rgba(5, 200, 0, 0.4);
+}
+.registrations .btn:hover,.sessions .btn:hover {
+  background: rgba(222, 112, 2, 0.739);
+}
+
+ul {
+  padding-left: 0;
+}
+li {
+  list-style: none;
 }
