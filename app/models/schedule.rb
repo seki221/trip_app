@@ -1,7 +1,9 @@
+# rubocop:disable Style/StringLiterals
+# require 'geocoder'
+# rubocop:enable Style/StringLiterals
+
 class Schedule < ApplicationRecord
   before_save :set_coordinates
-  before_save :geocode
-
   belongs_to :user
   belongs_to :planner
   has_many :bookmarks, as: :bookmarkable, dependent: :destroy
@@ -34,10 +36,10 @@ class Schedule < ApplicationRecord
 
   def set_coordinates
     return if latitude.present? && longitude.present?
-    results = Geocoder.search(self.address)
-    if results.first
-      self.latitude = results.first.latitude
-      self.longitude = results.first.longitude
+    results = Geocoder.search(address)
+    if geo = results.first
+      self.latitude = geo.latitude
+      self.longitude = geo.longitude
     end
   end
 end
