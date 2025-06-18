@@ -19,7 +19,7 @@ class SchedulesController < ApplicationController
 
     # Map用データ（住所をJSに渡す）
     @map_data = @schedules.map do |s|
-      { destination: s.destination, address: s.address }
+      { destination: s.destination, address: s.address, latitude: s.latitude, longitude: s.longitude }
     end
   end
 
@@ -42,6 +42,7 @@ class SchedulesController < ApplicationController
     @planner = Planner.find(params[:planner_id])
     @schedule = @planner.schedules.build(schedule_params)
     @schedule.user = current_user
+    @schedule.set_coordinates
 
     respond_to do |format|
       if @schedule.save
@@ -58,6 +59,7 @@ class SchedulesController < ApplicationController
   def update
     respond_to do |format|
       if @schedule.update(schedule_params)
+        @schedule.set_coordinates
         format.html { redirect_to planner_schedules_path(@planner), notice: "Schedule was successfully updated." }
         format.json { render :show, status: :ok, location: @schedule }
       else
