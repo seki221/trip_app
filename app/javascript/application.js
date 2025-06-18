@@ -45,3 +45,8 @@ document.addEventListener("turbo:load", () => {
     
   });
 });
+document.addEventListener("turbo:load", function () {
+  if (document.getElementById("map")) {
+    initMap();
+  }
+});
