@@ -24,7 +24,7 @@ body {
   /* min-height: 100vh; */
   position: relative;
   padding-bottom: 120px;
-  box-sizing: border-box;/
+  box-sizing: border-box;
 }
 
 /* メインページロゴ */
@@ -73,11 +73,4 @@ p,a{
 }
 .registrations .btn:hover,.sessions .btn:hover {
   background: rgba(222, 112, 2, 0.739);
-}
-
-ul {
-  padding-left: 0;
-}
-li {
-  list-style: none;
 }
