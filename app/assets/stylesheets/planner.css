@@ -8,7 +8,27 @@
 .card-body {
   border-bottom: dashed
 }
-.card{
-  border-top-left-radius: 0mm!important;
+.card {
+  border-top-left-radius: 0mm !important;
   border-top-right-radius: 0mm !important;
+}
+.card-img-top{
+  border-top-left-radius: 2mm!important;
+  border-top-right-radius: 2mm !important;
+}
+
+.planner-card {
+  cursor: pointer;
+  transition: .3s;
+  color: #333;
+  font-weight: bold;
+  border-radius: 4mm;
+}
+
+.planner-card:hover {
+  box-shadow: 0px 10px 10px 0  #353535;
+}
+
+.planner-card:active {
+  box-shadow: 0 0;
 }
