@@ -28,16 +28,15 @@
     font-weight: bold;
     margin-bottom: 0;
   }
-}
-.header-logo {
-  color: #B31667;
-  font-family: "Nico Moji";
-  font-size: 30px;
-  text-decoration-line: none
-}
-ul .before-login{
-  margin: 0!important;
-}
+  .nav-link.active{
+    background: linear-gradient(180deg, rgba(167, 235, 171, 1) 10%, rgba(214, 255, 234, 1) 86%, rgba(241, 255, 219, 1) 100%);
+  }
+  .header-logo {
+    color: #B31667;
+    font-family: "Nico Moji";
+    font-size: 30px;
+    text-decoration-line: none
+  }
 
 /* 以下未設定 */
 
@@ -90,4 +89,5 @@ ul .before-login{
   position: absolute;
   right: 15px;
   top: calc(50% - 5px);
+}
 }
