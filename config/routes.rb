@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
 
   get "sitelists", to: "sitelists#index"
+  get "mypages", to: "mypages#index"
 
   resources :bookmarks, only: [ :index, :create, :destroy ] do
     post :create_schedule, on: :member
