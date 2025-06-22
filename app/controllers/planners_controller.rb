@@ -67,7 +67,7 @@ class PlannersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def planner_params
-    params.require(:planner).permit(:title, :start_date, :end_date)
+    params.require(:planner).permit(:title, :start_date, :end_date, :image)
   end
 
   def correct_user

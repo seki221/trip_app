@@ -7,6 +7,7 @@ class Schedule < ApplicationRecord
   belongs_to :user
   belongs_to :planner
   has_many :bookmarks, as: :bookmarkable, dependent: :destroy
+  has_one_attached :image
 
   validate :dates_within_planner_range
 

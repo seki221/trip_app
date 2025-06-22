@@ -49,5 +49,10 @@
           <%= schedule.description || '---' %>
         </strong>
       </div>
+
+      <% if schedule.image.attached? %>
+        <%= image_tag schedule.image.variant(resize_to_limit: [600, 600]) %>
+      <% end %>
+
     </details>
 </div>

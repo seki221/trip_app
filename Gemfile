@@ -56,14 +56,14 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem "rspec-rails", require: false
 end
 
 gem "devise"
 
 gem "dotenv-rails", groups: [ :development, :test, :production ]
 
-gem "rspec-rails", "~> 8.0"
+gem "geocoder"
 
-gem "gon", "~> 6.4"
-
-gem "geocoder", "~> 1.8"
+gem "aws-sdk-s3", require: false
+gem "image_processing", "~> 1.12"

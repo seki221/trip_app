@@ -1,4 +1,4 @@
-version: '4.39.0'
+# version: '4.39.0'
 services:
   db:
     image: postgres:latest
@@ -24,10 +24,13 @@ services:
       - .:/app
       - bundle_data:/usr/local/bundle:cached
       - node_modules:/app/node_modules
+      - ./public/assets:/app/assets
     environment:
       TZ: Asia/Tokyo
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
       SELENIUM_DRIVER_URL: http://chrome:4443/wd/hub
+      DEV_DB_PASSWORD: password
+      PGDATABASE_DEVELOPMENT: trip_app_development
     ports:
       - "3000:3000"
     depends_on:
