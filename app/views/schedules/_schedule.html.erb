@@ -49,10 +49,15 @@
           <%= schedule.description || '---' %>
         </strong>
       </div>
-
-      <% if schedule.image.attached? %>
-        <%= image_tag schedule.image.variant(resize_to_limit: [600, 600]) %>
-      <% end %>
-
+      <div class="mb-3 align-items-normal accordion-content text-center">
+        <strong class="label-box">写真</strong>
+          <% if schedule.image.attached? %>
+            <div class="picture value-box">
+              <%= image_tag schedule.image, width:"300" ,height:"200" %>
+            </div>
+          <%else%>
+            <div class="none"></div>
+          <%end%>
+      </div>
     </details>
 </div>
