@@ -1,10 +1,9 @@
 <div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
   <% @planners.each do |planner| %>
-    <div class="col planner-card px-0 m-2">
-      <div class="card-img-top" style="height: 120px; background-color: #e9ecef;">
-      </div>
-
-      <div class="card">
+    <div class="col planner-card px-0">
+      <div class="card m-4">
+        <div class="card-img-top" style="height: 120px; background-color: #e9ecef;">
+        </div>
         <%= link_to planner_schedules_path(planner), class: "card-body text-dark text-decoration-none" do %>
         <h5 class="card-title text-center"><%= planner.title %></h5>
           <div class="d-flex mb-2 mt-2 justify-content-center">
