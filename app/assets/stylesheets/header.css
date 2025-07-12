@@ -31,63 +31,73 @@
   .nav-link.active{
     background: linear-gradient(180deg, rgba(167, 235, 171, 1) 10%, rgba(214, 255, 234, 1) 86%, rgba(241, 255, 219, 1) 100%);
   }
-  .header-logo {
-    color: #B31667;
-    font-family: "Nico Moji";
-    font-size: 30px;
-    text-decoration-line: none
+
+  header{
+    transition: background-color 1s ease-in-out;
+  }
+  .morning1 {
+    background: #26023d;
+    background: linear-gradient(180deg, rgba(38, 2, 61, 1) 0%, rgba(124, 42, 135, 1) 58%, rgba(150, 77, 184, 1) 76%, rgba(180, 69, 95, 1) 91%, rgba(163, 27, 0, 1) 100%);
   }
 
-/* 以下未設定 */
-
-.dropdown__lists {
-  display: none;
-  /*デフォルトでは非表示の状態にしておく*/
-  width: 100%;
-  position: absolute;
-  top: 60px;
-  left: 0;
+  .morning2 {
+    background: #833AB4;
+    background: linear-gradient(180deg, rgba(131, 58, 180, 1) 0%, rgba(179, 46, 120, 1) 61%, rgba(222, 36, 68, 1) 76%, rgba(253, 29, 29, 1) 87%);
+  }
+  .morning3 {
+    background: #833AB4;
+    background: linear-gradient(180deg, rgba(131, 58, 180, 1) 0%, rgba(179, 46, 120, 1) 29%, rgba(222, 36, 68, 1) 63%, rgba(253, 29, 29, 1) 79%, rgba(252, 176, 69, 1) 96%);
+  }
+  .day {
+    background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+  }
+  .evening {
+    background: linear-gradient(to right, #fbc2eb, #a18cd1);
+  }
+  .night {
+    background: #020024;
+    background: linear-gradient(180deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 8%, rgba(0, 212, 255, 1) 100%);
+  }
 }
-.gnavi__list:hover .dropdown__lists {
-  display: block;
-  /*Gナビメニューにホバーしたら表示*/
-}
-.dropdown__list {
-  background-color: #004d80;
-  /* height: 60px; */
-  transition: all .3s;
-  position: relative;
-}
-.dropdown__list:not(:first-child)::before {
-  content: "";
-  width: 100%;
-  height: 1px;
-  background-color: #3492d1;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.dropdown__list:hover {
-  background-color: #003558;
-}
-.dropdown__list a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@media screen and (max-width: 991px) {
+  .nav-item p ,.nav-item span{
   color: #fff;
-  text-decoration: none;
-  position: relative;
+  }
+  .morning1 {
+    background: #26023d;
+    background: linear-gradient(90deg, rgba(38, 2, 61, 1) 0%, rgba(124, 42, 135, 1) 58%, rgba(150, 77, 184, 1) 76%, rgba(180, 69, 95, 1) 91%, rgba(163, 27, 0, 1) 100%);
+  }
+
+  .morning2 {
+    background: #833AB4;
+    background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(179, 46, 120, 1) 61%, rgba(222, 36, 68, 1) 76%, rgba(253, 29, 29, 1) 87%);
+  }
+
+  .morning3 {
+    background: #833AB4;
+    background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(179, 46, 120, 1) 29%, rgba(222, 36, 68, 1) 63%, rgba(253, 29, 29, 1) 79%, rgba(252, 176, 69, 1) 96%);
+  }
+  .day {
+    background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+  }
+  .evening {
+    background: linear-gradient(to right, #fbc2eb, #a18cd1);
+  }
+  .night {
+    background: #020024;
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 8%, rgba(0, 212, 255, 1) 100%);
+  }
 }
-.dropdown__list a::before {
-  /* content: ''; */
-  display: block;
-  width: 6px;
-  height: 6px;
-  border-top: 2px solid #fff;
-  border-left: 2px solid #fff;
-  transform: rotate(135deg);
-  position: absolute;
-  right: 15px;
-  top: calc(50% - 5px);
+
+.part1 a, .part2 a, .part3 a{
+  color: rgba(13 110 253 1);;
+  font-family: "Nico Moji";
+  font-size: 30px;
+  text-decoration-line: none
 }
+.other a{
+  color: #B31667 !important;
+  font-family: "Nico Moji";
+  font-size: 30px;
+  text-decoration-line: none
 }
