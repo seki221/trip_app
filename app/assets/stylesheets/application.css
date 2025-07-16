@@ -3,13 +3,38 @@
   .pc {
     display: none;
   }
+  .title-section {
+    margin-top: 40%;
+  }
 
 }
+
+@media screen and (orientation: landscape) and (min-height: 350px) and (Max-width:960px) {
+  .title-section, .site-logo {
+    margin-top: 0%;
+    margin-bottom: 0%;
+  }
+}
 /* tablet向け */
-@media screen and (max-width: 1024px) {}
+@media screen and (max-width: 1024px) and (orientation: portrait){
+  .site-logo {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+  .title-section {
+    margin: 18% 0;
+  }
+}
 /* スマホ以外 */
 @media screen and (min-width: 992px)
 {
+  .site-logo {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+  .title-section{
+    margin: 20%;
+  }
 }
 html
 {
@@ -28,13 +53,10 @@ body {
 }
 
 /* メインページロゴ */
-.site-logo{
+.site-logo {
   color: #B31667;
   font-family: "Nico Moji";
   font-size: 75px;
-  /* padding: 11rem; */
-  margin-top: 0;
-  
 }
 
 /* メインページ背景色 */
