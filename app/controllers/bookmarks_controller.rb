@@ -27,15 +27,15 @@ class BookmarksController < ApplicationController
     redirect_back fallback_location: root_path, notice: "ブックマークを削除しました"
   end
 
-  def reposter
+  def create_schedule
     new_schedule = ScheduleReposterService.new(
       user: current_user,
       bookmark_id: params[:id],
       planner_id: params[:planner_id]
     ).call
-    redirect_to new_schedule, notice: プランに追加しました
+    redirect_to new_schedule, notice: "プランに追加しました"
   rescue ActiveRecord::RecordInvalid
-    redirect_to fallback_location: bookmarks_path, notice: "追加に失敗しました"
+    redirect_back fallback_location: root_path, alert: "追加に失敗しました"
   end
 
   private
