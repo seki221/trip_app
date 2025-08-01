@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   has_many :planners, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
+  has_many :schedules
 
   # bookmark
   def bookmark(record)
