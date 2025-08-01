@@ -5,6 +5,7 @@ class ScheduleReposterService
     @planner     = user.planners.find(planner_id)
   end
 
+  # 実際のリポスト処理
   def call
     original = @bookmark.bookmarkable
     @planner.schedules.create!(
