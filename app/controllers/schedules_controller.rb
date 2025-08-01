@@ -38,7 +38,6 @@ class SchedulesController < ApplicationController
 
   # POST /schedules or /schedules.json
   def create
-    @schedule = Schedule.new(schedule_params)
     @planner = Planner.find(params[:planner_id])
     @schedule = @planner.schedules.build(schedule_params)
     @schedule.user = current_user
