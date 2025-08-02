@@ -22,4 +22,5 @@ production:
   <<: *default
   database: <%= ENV["PGDATABASE_PRODUCTION"] %>
   username: <%= ENV['DATABASE_USERNAME'] %>
-  password: <%= ENV["DATABASE_PASSWORD"] %>
+  password: <%= ENV["PASSWORD_PRODUCTION"] %>
+  host: <%= ENV["HOST_PRODUCTION"] %>
